@@ -1,8 +1,9 @@
 import './App.css';
 import { BrowserRouter as Browser,Route, Router,Routes } from 'react-router-dom';
-import { Register } from './pages/register/Register';
+
 import { Dashboard } from './pages/dashboard/Dashboard';
-import { Footer } from './components/layout/Footer';
+
+import { Login } from './pages/login/Login';
 
 
 function App() {
@@ -11,9 +12,8 @@ function App() {
       <Browser>
       <Routes>
       <Route path="/" element={<Dashboard/>}/>
-       <Route path="/register" element={<Register/>}/>
-       <Route path="/footer" element={<Footer/>}/>
-
+      <Route path="/login" element={<Login/>}/>
+       
 
       </Routes>
      </Browser>

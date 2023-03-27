@@ -14,9 +14,9 @@ export const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           
           <Nav className="ms-auto">
-            <Link className='nav-link text-light ' to="/">Home</Link>
-            <Link className='nav-link  text-light'to="/login">Login</Link>
-            <Link className='nav-link  text-light'to="/register">Register</Link>
+          <Link className='nav-link  text-light'to="/">Home</Link>
+           
+            <Link className='nav-link  text-light'to="/login">MyAccount</Link>
             <Link className='nav-link  text-light'to="/addbag">Add Bag</Link>
             
            
