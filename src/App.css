@@ -31,3 +31,8 @@ border-color: solid rgba(0, 0, 0, 0.662);
     justify-content:center;
     align-items:start;
 } 
+
+.img{
+    width: 70;
+    height: 60vh;
+}
