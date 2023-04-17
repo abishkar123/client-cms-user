@@ -3,6 +3,7 @@ const rootUrl = "http://localhost:8000/api/v1";
 const DashboardCardApi = rootUrl + "/product";
 
 const fetchProcesser =async ({method, url, data,} )=>{
+
     try {
         const res = await axios({
             method,
@@ -11,6 +12,7 @@ const fetchProcesser =async ({method, url, data,} )=>{
            
             
         })
+ 
 
         return res.data  
     } catch (error) {
@@ -23,12 +25,12 @@ const fetchProcesser =async ({method, url, data,} )=>{
 }
 
 
-export const fetchclientproduct = async (data)=>{
+export const fetchclientproduct = async ()=>{
+
     const url = DashboardCardApi;
     const obj ={
         method: "get",
         url,
-        data,
        
     };
 
