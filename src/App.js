@@ -6,9 +6,18 @@ import { Dashboard } from './pages/dashboard/Dashboard';
 import { Login } from './pages/login/Login';
 import { Register } from './pages/register/Register';
 import { Category } from './pages/category/Category';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { gettrendingProductAction } from './pages/dashboard/dashboardAction';
+
 
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(()=>{
+
+  dispatch( gettrendingProductAction())
+  },[dispatch])
   return (
     <div>
       <Browser>
@@ -29,6 +38,7 @@ function App() {
           
     </div>
   );
+
 }
 
 export default App;
