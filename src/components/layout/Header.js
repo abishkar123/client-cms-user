@@ -14,7 +14,7 @@ export const Header = () => {
   useEffect(()=>{
     dispatch(fetchcategoryAction())
   },[dispatch])
-  console.log(categories, "cdjdj")
+ 
 
   return (
     <div>

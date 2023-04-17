@@ -1,19 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
-import{ Card, Row, Col }from 'react-bootstrap';
+import{ Card, Row, Col, ButtonGroup, InputGroup, Form}from 'react-bootstrap';
 import { DashboardCard } from '../dashboard/DashboardCard'
-import { useParams} from 'react-router-dom'
+import {  useParams} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { gettrendingProductAction } from '../dashboard/dashboardAction'
 import { Customelayout } from '../../components/customlayout/Customelayout';
 
 export const Category = () => {
+    const [quantity, setQuantity] = useState(1);
+
+    const incrementQuantity = () => {
+      setQuantity(prevQuantity => prevQuantity + 1);
+    };
+  
+    const decrementQuantity = () => {
+      setQuantity(prevQuantity => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+    };
+
     const dispatch = useDispatch()
     const [ showslug, setshowslug] = useState();
 
     // get the slug from url params using useParams
   const { slug} = useParams()
-  console.log(slug)
+
+//   useEffect(()=>{
+//     if(!filteredproduct.length)
+//     dispatch(filteredproduct())
+// }, [filteredproduct])
+ 
 
     //get all products from state useing useSelector and filter them using slug
     const { trendingProducts} = useSelector ((state)=> state.trending)
@@ -27,7 +42,7 @@ export const Category = () => {
     // loop the filtered products
     // dispatch(gettrendingProductAction(slug))
     const filteredproduct = trendingProducts.length ? trendingProducts.filter(item =>item.parentCat === _id) : []
-    console.log( filteredproduct, trendingProducts)
+    
   
 
   return (
@@ -42,14 +57,22 @@ export const Category = () => {
                     <Card.Body>
                         <Card.Title>{item.name}</Card.Title>
                         <Card.Text> Price: {item.salesPrice}</Card.Text>
-                        <Card.Subtitle className="mb-2 text-muted"> Quantity: {item.qty}</Card.Subtitle>
-                        <Card.Text></Card.Text>
-                        
                         <Card.Text>
-                            <Card.Link href="#">Card Link</Card.Link>
-                            <Card.Link href="#">Another Link</Card.Link>
+                        <Form.Label>Quantity</Form.Label>
+                         <Form.Control type="number" placeholder='0' defaultValue="1"/>
+
+                           
+                            {/* Quantity <br/>
+                            <Button onClick={()=>decrementQuantity()}>-</Button>
+
+                          <Button onClick={()=>incrementQuantity()}>+</Button> */}
                         </Card.Text>
+                         
+                        
                         <Button className='cardButton' style={{ width: '100%', background: "white", color: "black", border: "1px solid grey" }}><i className="fa-solid fa-cart-plus" style={{ color: "#111213" }}> </i> Add</Button>
+                        <Card.Text className='text-muted'> Detail <br/>
+                            {item.description}
+                        </Card.Text>
                     </Card.Body>
                 </Card>
             </Col>

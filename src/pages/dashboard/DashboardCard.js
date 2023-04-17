@@ -3,11 +3,11 @@ import Button from 'react-bootstrap/Button';
 import{ Card, Row, Col }from 'react-bootstrap';
 import { useDispatch, useSelector} from 'react-redux';
 import { gettrendingProductAction } from './dashboardAction';
+import { useParams } from 'react-router-dom';
 
  export const DashboardCard =()=> {
   const dispatch = useDispatch();
   const { trendingProducts} = useSelector ((state)=> state.trending)
-
 
 
   useEffect(()=>{
@@ -29,11 +29,12 @@ import { gettrendingProductAction } from './dashboardAction';
                         <Card.Subtitle className="mb-2 text-muted"> Quantity: {item.qty}</Card.Subtitle>
                         <Card.Text></Card.Text>
                         
-                        <Card.Text>
-                            <Card.Link href="#">Card Link</Card.Link>
-                            <Card.Link href="#">Another Link</Card.Link>
-                        </Card.Text>
+                        
                         <Button className='cardButton' style={{ width: '100%', background: "white", color: "black", border: "1px solid grey" }}><i className="fa-solid fa-cart-plus" style={{ color: "#111213" }}> </i> Add</Button>
+                        <Card.Text className='text-muted'> Detail <br/>
+                            {item.description}
+                        </Card.Text>
+                        
                     </Card.Body>
                 </Card>
             </Col>
