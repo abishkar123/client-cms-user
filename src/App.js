@@ -5,6 +5,7 @@ import { Dashboard } from './pages/dashboard/Dashboard';
 
 import { Login } from './pages/login/Login';
 import { Register } from './pages/register/Register';
+import { Category } from './pages/category/Category';
 
 
 function App() {
@@ -17,6 +18,9 @@ function App() {
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
 
+
+  
+      <Route path="/category/:slug" element={<Category/>}/>
        
 
       </Routes>

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import{ Card, Row, Col }from 'react-bootstrap';
 import { useDispatch, useSelector} from 'react-redux';
 import { gettrendingProductAction } from './dashboardAction';
 
@@ -15,20 +15,30 @@ import { gettrendingProductAction } from './dashboardAction';
   },[dispatch])
   
   return (
-    <Card style={{ width: '18rem' }}>
-    <Card.Img variant="top" src="holder.js/100px180" />
-    <Card.Body>
-      {/* {trendingProducts?.length > 0 && 
-      trendingProducts.map((item, i)=>(
-        <Card.name>{item.name}</Card.name>
-
-      )
-  
-      )} */}
-
-
-      <Button variant="primary">Add Cart</Button>
-    </Card.Body>
-  </Card>
+   
+    <div>
+    <Row className="d-flex justify-content-around">
+        { trendingProducts.map((item, index) => (
+            <Col mt="2">
+              {""}
+                <Card style={{ width: '16rem' }} className="m-3 card">
+                    <Card.Img variant="top" src={process.env.REACT_APP_DOMAIN + item?.mainImage.substr(6)} />
+                    <Card.Body>
+                        <Card.Title>{item.name}</Card.Title>
+                        <Card.Text> Price: {item.salesPrice}</Card.Text>
+                        <Card.Subtitle className="mb-2 text-muted"> Quantity: {item.qty}</Card.Subtitle>
+                        <Card.Text></Card.Text>
+                        
+                        <Card.Text>
+                            <Card.Link href="#">Card Link</Card.Link>
+                            <Card.Link href="#">Another Link</Card.Link>
+                        </Card.Text>
+                        <Button className='cardButton' style={{ width: '100%', background: "white", color: "black", border: "1px solid grey" }}><i className="fa-solid fa-cart-plus" style={{ color: "#111213" }}> </i> Add</Button>
+                    </Card.Body>
+                </Card>
+            </Col>
+        ))}
+    </Row>
+</div>
   );
 }

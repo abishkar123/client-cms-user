@@ -1,6 +1,7 @@
 import axios from "axios";
-const rootUrl = "http://localhost:8000/api/v1";
+const rootUrl = "http://localhost:8001/api/v1";
 const DashboardCardApi = rootUrl + "/product";
+const catapi= rootUrl + "/category"
 
 const fetchProcesser =async ({method, url, data,} )=>{
 
@@ -25,9 +26,25 @@ const fetchProcesser =async ({method, url, data,} )=>{
 }
 
 
-export const fetchclientproduct = async ()=>{
+export const fetchclientproduct = async (slug)=>{
 
-    const url = DashboardCardApi;
+    const url =  slug? DashboardCardApi + "/" + slug : DashboardCardApi;
+    const obj ={
+        method: "get",
+        url,
+        slug,
+       
+    };
+
+
+    return fetchProcesser(obj);
+
+};
+
+
+export const fetchcategory= async ()=>{
+
+    const url = catapi;
     const obj ={
         method: "get",
         url,
@@ -38,3 +55,4 @@ export const fetchclientproduct = async ()=>{
     return fetchProcesser(obj);
 
 };
+

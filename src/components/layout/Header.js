@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { useDispatch, useSelector } from 'react-redux';
 import {Link} from "react-router-dom";
+import { fetchcategoryAction } from '../../pages/category/categoryAction';
 
 export const Header = () => {
+
+  const dispatch= useDispatch()
+  const {categories}= useSelector((state)=> state.category)
+
+  useEffect(()=>{
+    dispatch(fetchcategoryAction())
+  },[dispatch])
+  console.log(categories, "cdjdj")
+
   return (
     <div>
          <Navbar className="bg-dark text-light" expand="md">
@@ -17,11 +28,16 @@ export const Header = () => {
         
        
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className='pa'>    
-      <Link className='nav-link  text-light'to="/">Football Boot</Link>
-        <Link className='nav-link  text-light'to="/">Sneakers</Link>
-        <Link className='nav-link  text-light'to="/">Adidas</Link>
-        <Link className='nav-link  text-light'to="/">Nike</Link>
+          <Nav className='pa'> 
+
+          {categories.map((item, index)=>(
+           
+            <Link className='nav-link  text-light'to={`/category/${item.slug}`}>{item.name} </Link>
+            
+          )
+        
+          )}
+      
 
         </Nav>
          
