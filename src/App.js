@@ -6,9 +6,11 @@ import { Dashboard } from './pages/dashboard/Dashboard';
 import { Login } from './pages/login/Login';
 import { Register } from './pages/register/Register';
 import { Category } from './pages/category/Category';
+
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { gettrendingProductAction } from './pages/dashboard/dashboardAction';
+import { Product } from './pages/product/Product';
 
 
 
@@ -30,6 +32,10 @@ function App() {
 
   
       <Route path="/category/:slug" element={<Category/>}/>
+      <Route path="/product/:slug" element={<Product/>}/>
+      
+   
+
        
 
       </Routes>

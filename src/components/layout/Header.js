@@ -43,8 +43,8 @@ export const Header = () => {
          
         <Nav className='ms-auto'>
           <Link className='nav-link  text-light'to="/">Home</Link>
-            <Link className='nav-link  text-light hover'  to="/login"> <i class="fa-solid fa-house fa-lg"  title='MyAccount'></i></Link>
-            <Link className='nav-link  text-light'to="/addbag"><i class="fa-solid fa-cart-plus fa-lg fa-beat" title='Opening Shopping Cart'></i></Link>
+            <Link className='nav-link  text-light hover'  to="/login"> <i className="fa-solid fa-house fa-lg"  title='MyAccount'></i></Link>
+            <Link className='nav-link  text-light'to="/addbag"><i className="fa-solid fa-cart-plus fa-lg fa-beat" title='Opening Shopping Cart'></i></Link>
             </Nav>
             
         
