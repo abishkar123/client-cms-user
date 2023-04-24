@@ -42,8 +42,8 @@ export const Category = () => {
         {  filteredproduct?.map((item, index) => (
             <Col mt="2">
            <Link className='nav-link' to={`/product/${item.slug}`}>
-                <Card style={{ width: '16rem' }} className="m-3 card">
-                    <Card.Img variant="top" src={process.env.REACT_APP_DOMAIN + item?.mainImage.substr(6)} />
+                <Card style={{width:'18rem',  height:'60vh'}} className="m-3 card">
+                    <Card.Img  style={{width:'', h40vheight:"40vh"}}variant="top" src={process.env.REACT_APP_DOMAIN + item?.mainImage.substr(6)} />
                     <CustomeCart
                     key={item}
                     {...item}/>

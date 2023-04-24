@@ -5,8 +5,9 @@ import { Header } from '../layout/Header'
 
 export const Customelayout = ({children}) => {
   return (
-    <div>
+    <div className='bodycolor'>
         <Header/>
+       
         <Container className="main">{children}</Container>
       <Footer />
         

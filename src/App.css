@@ -4,6 +4,9 @@
     color: black;
     font-weight: bolder;
 }
+.bodycolor{
+    background: rgba(206, 206, 206, 0);
+}
 
 .bgcolor{
     background: rgba(62, 127, 157, 0.621);
@@ -36,3 +39,11 @@ border-color: solid rgba(0, 0, 0, 0.662);
     width: 70;
     height: 60vh;
 }
+
+.cartcss{
+   
+    aspect-ratio: 3/2;
+    border:snow    
+  
+}
+

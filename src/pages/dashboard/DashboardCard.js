@@ -19,12 +19,12 @@ import { CustomeCart } from '../../components/CustomeCart';
    
     <div>
         
-     <Row className="d-flex justify-content-around">
+     <Row className="d-flex justify-content-around ">
         {  trendingProducts?.map((item, index) => (
-            <Col mt="2">
+            <Col mt="2" >
            <Link className='nav-link' to={`/product/${item.slug}`}>
-                <Card style={{ width: '16rem' }} className="m-3 card">
-                    <Card.Img variant="top" src={process.env.REACT_APP_DOMAIN + item?.mainImage.substr(6)} />
+                <Card  style={{ width:'18rem',  height:'60vh'}} className="m-3 cardcss">
+                    <Card.Img style={{width:'38vh', h40vheight:"40vh"}} variant="top" src={process.env.REACT_APP_DOMAIN + item?.mainImage.substr(6)} />
                     <CustomeCart
                     key={item}
                     {...item}/>

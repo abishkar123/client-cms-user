@@ -14,7 +14,7 @@ export const Dashboard = () => {
         </div>
         
         <div className='mt-3'>
-          <h3 className='text-center text-balck'>NEW TRENDING SHOE</h3>
+          <h3 className='text-center text-balck'>NEW ARRIVAL SHOE</h3>
           <Container>
           <Row className='py-3 mt-3'>
         <Col> <DashboardCard/></Col>

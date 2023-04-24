@@ -1,25 +1,22 @@
 import{createSlice} from '@reduxjs/toolkit'
+
+
 const initialState ={
-    cart: 0,
+    cart: [],
 }
 const cartCountSlice = createSlice({
     name:"cartcounter",
     initialState,
     reducers:{
-        increment:(state) =>{
-            state.cart++
-        },
-        decrement:(state) =>{
-            state.cart--
-        },
 
-        reset:(state)=>{
-            state.cart = 0
+        addcart:(state,{payload=[]})=>{
+            state.cart = {...state.cart, payload}
         }
+        
 
     }
 })
 
 const { reducer, actions}= cartCountSlice
-export const { increment, decrement, reset} = actions
+export const { addcart} = actions
 export default reducer
