@@ -3,10 +3,12 @@ import { Customelayout } from '../../components/customlayout/Customelayout'
 import {  useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { Card,Row,Col, Button, Container, Form, Ratio } from 'react-bootstrap';
+import { addcart } from '../addcart/countSlice';
 
 
 
 export const Product = () => {
+    const dispatch = useDispatch()
     const [form, setForm] = useState(0);
 
 // get the slug from the url useing userParams
@@ -22,10 +24,11 @@ const handleOnChange = (e)=>{
     const { value} = e.target
     setForm(value)
 }
-
+ console.log(form)
 
 const AddCartSubmit  = (e)=>{
     e.preventDefault()
+
     //descutruce the products 
     const {name, qty, salesPrice, mainImage, _id} = filteredproduct
     const obj = {
@@ -37,7 +40,7 @@ const AddCartSubmit  = (e)=>{
         _id,
         
     }
-    console.log(obj)
+   dispatch(addcart(obj))
 }
 
 

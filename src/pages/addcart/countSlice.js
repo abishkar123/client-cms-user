@@ -10,7 +10,9 @@ const cartProductSlice = createSlice({
     reducers:{
 
         addcart:(state,{payload=[]})=>{
-            state.cart = {...state.cart, payload}
+
+           const temArg = state.cart.filter((item)=> (item._id !== payload._id))
+            state.cart =[...temArg, payload]
         }
         
 
