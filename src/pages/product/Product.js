@@ -21,7 +21,7 @@ const filteredproduct = trendingProducts.length ? trendingProducts.find(item=>it
 
 
 const handleOnChange = (e)=>{
-    const { value} = e.target
+    const {value} = e.target
     setForm(value)
 }
  console.log(form)
@@ -65,7 +65,7 @@ const AddCartSubmit  = (e)=>{
 
                         <div className='d-grid'> <Button type='submit' className='cardButton'
                       
-                        >Add Cart</Button></div>
+                        >ADD TO CART</Button></div>
                         
                         </Col>
                      </Row>

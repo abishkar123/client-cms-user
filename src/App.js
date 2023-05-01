@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { gettrendingProductAction } from './pages/dashboard/dashboardAction';
 import { Product } from './pages/product/Product';
 import { YourCart } from './pages/order/YourCart';
+import { Cart } from './pages/addcart/Cart';
 
 
 
@@ -34,7 +35,10 @@ function App() {
   
       <Route path="/category/:slug" element={<Category/>}/>
       <Route path="/product/:slug" element={<Product/>}/>
-      <Route path="/yourcart" element={<YourCart/>}/>
+       <Route path="/yourcart" element={<YourCart/>}/> 
+      <Route path="/cart" element={<Cart/>}/>
+      
+   
    
 
        
