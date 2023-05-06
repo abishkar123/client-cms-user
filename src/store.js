@@ -2,16 +2,13 @@ import {configureStore} from '@reduxjs/toolkit';
 import dashboardReducer from "./pages/dashboard/dashboardSlice"
 import categoryReducer from "./pages/category/categorySlice"
 import counterReducer from "./pages/addcart/countSlice"
+import paymentReducer from "./pages/checkout/CheckOutSlice"
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // or whatever storage engine you want to use
 
 
 
 // Define the persist config for each reducer
-
-
-
-
 
 
 const counterPersistConfig = {
@@ -29,6 +26,7 @@ const store = configureStore({
         trending: dashboardReducer,
        category: categoryReducer,
        counter: persistedcounterReducer,
+       payments: paymentReducer,
     }
        
 });
