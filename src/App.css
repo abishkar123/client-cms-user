@@ -1,3 +1,6 @@
+
+
+
 .titelName{
     font-family:sans-serif ;
     font-size: 25px;
@@ -16,6 +19,7 @@
 .main{
     min-height: 75vh;
 }
+
 
 .systemintro{
 margin: auto;
@@ -72,7 +76,7 @@ border-color: solid rgba(0, 0, 0, 0.662);
 }
 
 .boxcheckout{
-    border: solid rgba(202, 197, 197, 0.701) 0.5rem;
+    border: solid rgba(202, 197, 197, 0.701) 0.002rem;
   }
 .checkoutfont{
     font-family:Georgia, 'Times New Roman', Times, serif, Geneva, Tahoma, sans-serif;
@@ -103,3 +107,24 @@ border-color: solid rgba(0, 0, 0, 0.662);
     padding: 1.5rem;
     /* border-radius: 10px; */
   }
+
+ 
+  .side-bar {
+    min-height: 90vh;
+
+  }
+  .side-bar a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+  }
+  .side-bar ul li {
+    list-style-type: none;
+    margin-bottom: 2rem;
+  }
+
+  .sidebar-memu{
+    position: fixed;
+  }
+
+

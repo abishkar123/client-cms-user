@@ -59,10 +59,8 @@ const handleOnQty = (id, e) => {
 
             </Form>
 
-            <Link to="/checkoutpage">
-
-<div className='d-grid p-5'>
-  <Button className='artdes' type='submit' variant='dark'> CheckOut</Button>
+  <Link to="/checkoutpage"><div className='d-grid'>
+  <Button  type='submit' variant='dark'> {""}CheckOut</Button>
 </div>
 </Link>
 

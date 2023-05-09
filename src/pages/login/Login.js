@@ -1,9 +1,39 @@
 import{ Button,Form, Container,Row,Col} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Customelayout } from '../../components/customlayout/Customelayout';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useRef } from 'react';
+import { autoLogin, loginAction } from './LoginAction';
 
 
 export const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const emailRef = useRef("");
+  const passRef = useRef("");
+  const location = useLocation();
+
+  const {isloading, user} = useSelector((state)=> state.user)
+
+
+  const origin = location?.state?.from?.pathname || "/myaccount";
+
+  const handleOnSubmit = (e) => {
+      e.preventDefault()
+      const formDt = {
+          email: emailRef.current.value,
+          password: passRef.current.value,
+      };
+      if (!formDt.email || !formDt.password) {
+          return alert("Please fill in both the fields!");
+      }
+      // disptach login action to call api
+      dispatch(loginAction(formDt));
+    
+  }
+  useEffect(() => {
+    user?._id ? navigate(origin):dispatch(autoLogin())
+  }, [user?._id, navigate, origin, dispatch])
   return (
     <Customelayout>
         <Container>
@@ -34,7 +64,7 @@ export const Login = () => {
                 <Col className='bg-secondary p-5'>
                     <div className='bg-light p-4 rounded'>
                     <div className='regpage'>
-     <Form>
+     <Form onSubmit={handleOnSubmit}>
       <h3>Login </h3>
       <br/>
       <h4>Existing Customer</h4>
@@ -42,13 +72,16 @@ export const Login = () => {
       <hr/>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address:</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
+        <Form.Control type="email" placeholder="Enter email"
+        ref={emailRef}
+         />
        
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Control type="password" placeholder="Password"
+        ref={passRef} />
       </Form.Group>
       <div className='d-grid'>
       <Button variant='secondary' type="submit">

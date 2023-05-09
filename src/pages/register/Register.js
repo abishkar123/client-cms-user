@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import { postnewuser } from '../../helper/axioshelper';
 import { toast } from 'react-toastify';
 
+
+
 export const Register = () => {
   const [form, setForm] = useState({})
 
@@ -17,11 +19,23 @@ export const Register = () => {
     })
   }
 
-  const handleOnSubit= async (e)=>{
-    e.preventDefault();
-    const {status, message}= await postnewuser()
-    toast[status](message)
-  }
+  const handleOnSubit = async (e) => {
+    e.preventDefault()
+    const { confirmPassword, ...rest } = form
+    if (confirmPassword !== rest.password) {
+        toast.error("Password and confirm password do not match!")
+        return
+    }
+    const { status, message } = await postnewuser(rest);
+   
+  
+    toast[status](message);
+
+
+
+
+}
+
   const inputes = [
     {
       label: "First Name",
@@ -57,10 +71,16 @@ export const Register = () => {
       placeholder: "********",
       required: true,
     },
+    {
+      label: "Confirm Password",
+      type: "password",
+      name: "confirmPassword",
+      placeholder: "********",
+      required: true,
+  },
     
   ];
-  console.log(form)
-
+ 
   return (
     <Customelayout>
 
