@@ -1,7 +1,19 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import { requestPending } from '../../pages/login/LoginSlice';
+import { useDispatch } from 'react-redux';
 
 export const Sidebar = () => {
+  const navigate = useNavigate()
+const dispatch = useDispatch()
+
+
+  const handleOnLogOut = e =>{
+    sessionStorage.removeItem('accessJWT')
+    localStorage.removeItem("refreshJWT")
+  dispatch(requestPending({}));
+  
+  }
   return (
     <div className='sidebar-menu'>
       <div className='mt-5'>
@@ -11,28 +23,24 @@ export const Sidebar = () => {
     <div className='mt-5'>
                 <ul>
                   <li>
-                    <Link to="/dashboard">
+                    <Link to="/userdashboard">
                       <i className="fa-solid fa-gauge"></i> Dashboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/category">
-                      <i className="fa-sharp fa-solid fa-sitemap"></i>MyAccount
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/products">
-                      <i className="fa-solid fa-box"></i> Order History
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/paymentMethods">
-                      <i className="fa-solid fa-credit-card"></i> Profile
                     </Link>
                   </li>
                   
                   <li>
-                    <Link to="/setting">
+                    <Link to="/orderhistory">
+                      <i className="fa-solid fa-box"></i> Order History
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/profile">
+                      <i className="fa-solid fa-credit-card"></i> Change password
+                    </Link>
+                  </li>
+                  
+                  <li>
+                    <Link to="/"  onClick={handleOnLogOut}> 
                       <i className="fa-solid fa-gear"></i> Logout
                     </Link>
                   </li>

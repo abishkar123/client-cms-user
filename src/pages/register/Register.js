@@ -99,7 +99,7 @@ export const Register = () => {
 
       <div className='d-grid'>
       <Button variant='secondary' type="submit">
-        Sing Up
+        SignUp
       </Button>
       <div className='text-end'><Link className='nav-link' to="/login">Login Here</Link></div>
       

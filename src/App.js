@@ -17,6 +17,7 @@ import { CheckOutPage } from './pages/checkout/CheckOutPage';
 import { NewAccVerify } from './pages/verfiyemail/NewAccVerify';
 import { PrivateRouter } from './components/private-router/PrivateRouter';
 import { MyAccount } from './pages/myaccount/MyAccount';
+import { UserDashboard } from './pages/userdashboard/UserDashboard';
 
 
 
@@ -55,6 +56,7 @@ function App() {
       }/>
    
    <Route path="myaccount" element={<MyAccount/>} />
+   <Route path="userdashboard" element={<UserDashboard/>} />
 
        
 

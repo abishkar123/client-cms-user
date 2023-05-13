@@ -1,7 +1,15 @@
 
 import {toast} from "react-toastify"
-import { postOrder } from "../../helper/axioshelper";
+import { getorder, postOrder } from "../../helper/axioshelper";
 import { setorderlist } from "./OrderSlice";
+
+
+export const fetchorder = () => async (dispatch) => {
+  const { status,order} = await getorder();
+  console.log(order)
+  status === "success" && dispatch(setorderlist(order));
+};
+
 
 export const postorderAction= (data) =>async dispatch =>{
     const resultPending = postOrder(data);
@@ -15,5 +23,5 @@ export const postorderAction= (data) =>async dispatch =>{
     toast[status](message);
     
     
-  status === "success" && dispatch(setorderlist());
+  status === "success" && dispatch(fetchorder());
 }

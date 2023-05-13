@@ -78,7 +78,7 @@ export const autoLogin = () => async (dispatch) => {
     }
 };
 
-const forceLogout = () => (dispatch) => {
+export const forceLogout = () => (dispatch) => {
     sessionStorage.removeItem("accessJWT");
     localStorage.removeItem("refreshJWT");
     dispatch(requestSuccess({}));

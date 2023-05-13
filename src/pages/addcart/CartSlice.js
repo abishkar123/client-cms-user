@@ -12,7 +12,7 @@ const itemcartSlice = createSlice({
 
         setAddtoCart:(state,{payload=[]})=>{
 
-           const temArg = state.cart.filter((item)=> (item._id !== payload._id))
+           const temArg = state.cart.filter((item)=> (item._id !== payload._id) && (user_id !==payload._id))
             state.cart =[...temArg, payload]
         }
         

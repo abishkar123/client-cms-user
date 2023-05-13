@@ -6,6 +6,7 @@ import { FrontImageCarousel } from './FrontImageCarousel'
 
 
 export const Dashboard = () => {
+  
   return (
     <div>
       <Customelayout>

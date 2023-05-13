@@ -197,3 +197,16 @@ export const postOrder = async (order) => {
 
 }
 
+export const getorder = async () => {
+    const url = orderApi ;
+    const obj = {
+        method: "get",
+        url,
+        isPrivate: true,
+     
+    };
+
+    return fetchProcesser(obj);
+
+}
+
