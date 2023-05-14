@@ -10,15 +10,17 @@ import { Userdashinput } from '../../components/customeinput/Userdashinput'
 
 export const UserDashboard = () => {
     const dispatch = useDispatch()
+    const {user} = useSelector((state)=>state.user)
+    console.log(user)
+   
 
-    const {order} = useSelector((state)=>state.orderlist)
-    const {userId, ...rest} = order
-
-    const filtereduser = order.length? order.find((item)=>item.userId !==item._id):[]
-    console.log(filtereduser)
+    // const filtereduser = order.length? order.find((item)=>item.userId!==item._id):[]
+    
+    // console.log(filtereduser)
   
     useEffect(()=>{
       dispatch(fetchorder())
+     
     },[dispatch])
 
     const inputes = [
@@ -26,7 +28,7 @@ export const UserDashboard = () => {
         label: "First Name",
         type: "text",
         name: "fname",
-        placeholder: filtereduser.fname,
+        placeholder: user.fname,
        
         required: true,
       },
@@ -34,46 +36,46 @@ export const UserDashboard = () => {
         label: "Last Name",
         type: "text",
         name: "lname",
-        placeholder: filtereduser.lname,
+        placeholder: user.lname,
         required: true,
       },
       {
         label: "Email",
         type: "text",
         name: "email", 
-        placeholder:filtereduser.email,
+        placeholder:user.email,
       },
       {
         label: "Phonenumber",
         type: "number",
         name: " phonenumber",
-        placeholder: filtereduser.phonenumber,
+        placeholder: user.phonenumber,
       },
       {
         label: "Address line",
         type: "text",
         name: "addressline",
-        placeholder: filtereduser.addressline,
+        placeholder: user.addressline,
       },
       {
         label: "Town/City",
         type: "text",
         name: "town",
-        placeholder: filtereduser.town,
+        placeholder: user.town,
       },
 
       {
         label: "State",
         type: "text",
         name: "state",
-        placeholder: filtereduser.state,
+        placeholder: user.state,
       },
 
       {
         label: "Posscode",
         type: "number",
         name: "posscode",
-        placeholder: filtereduser.posscode,
+        placeholder: user.posscode,
       },
       
 
@@ -95,12 +97,6 @@ export const UserDashboard = () => {
       // onChange={handleOnChange} 
       />
      ))}   
-
-  
-
-              
-
-                
              
             </Form>
         

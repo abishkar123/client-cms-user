@@ -11,7 +11,7 @@ const cartProductSlice = createSlice({
 
         addcart:(state,{payload=[]})=>{
 
-           const temArg = state.cart.filter((item)=> (item._id !== payload._id))
+           const temArg = state.cart.filter((item)=>(item._id !== payload._id))
             state.cart =[...temArg, payload]
         },
         setRemoveFromCard: (state, { payload }) => {

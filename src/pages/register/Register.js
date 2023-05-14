@@ -60,7 +60,7 @@ export const Register = () => {
     {
       label: "Phonenumber",
       type: "number",
-      name: " phonenumber",
+      name: "phonenumber",
       placeholder: "02345",
     },
     
