@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Customelayout } from '../../components/customlayout/Customelayout'
 import {  useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { Card,Row,Col, Button, Container, Form, Ratio } from 'react-bootstrap';
 import { addcart } from '../addcart/countSlice';
+
 
 
 
@@ -15,16 +16,22 @@ export const Product = () => {
 const {slug} = useParams();
 
 // get the product belongs to slug
+
 const { trendingProducts} = useSelector((state)=> state.trending)
+ 
 
 const filteredproduct = trendingProducts.length ? trendingProducts.find(item=>item.slug === slug) : []
 
+ console.log(filteredproduct, trendingProducts, slug,"wejkhjh")
+// useEffect(() => {
+//     dispatch(getSelectedProductAction(sllug))
+// },[])
 
 const handleOnChange = (e)=>{
     const {value} = e.target
     setForm(value)
 }
- console.log(form)
+ 
 
 const AddCartSubmit  = (e)=>{
     e.preventDefault()
@@ -50,10 +57,10 @@ const AddCartSubmit  = (e)=>{
         <Customelayout>
             <Container>
                    <Form className='p-3'onSubmit={AddCartSubmit}>
-                     <Card.Title>{filteredproduct.name}</Card.Title>
+                     <Card.Title>{filteredproduct?.name}</Card.Title>
                      <Row>
                         <Col style={{borderRadius:"1rem"}}>   <Card.Img  variant="top" src={process.env.REACT_APP_DOMAIN + filteredproduct?.mainImage?.substr(6)} /></Col>
-                        <Col> <Card.Text> Price: {filteredproduct.salesPrice}</Card.Text>
+                        <Col> <Card.Text> Price: {filteredproduct?.salesPrice}</Card.Text>
 
                          <Card.Text>
 
@@ -71,7 +78,7 @@ const AddCartSubmit  = (e)=>{
                      </Row>
                     <Card.Body>
                         <Card.Text className='text-muted'> Detail <br/>
-                            {filteredproduct.description}
+                            {filteredproduct?.description}
                         </Card.Text>
                     </Card.Body>
                 </Form>

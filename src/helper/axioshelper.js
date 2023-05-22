@@ -6,6 +6,7 @@ const catapi= rootUrl + "/category";
 const paymentapi = rootUrl + "/payments";
 const orderApi = rootUrl + "/order";
 
+
 const fetchProcesser =async ({method, url, data,token, isPrivate} )=>{
 
     try {
@@ -209,4 +210,19 @@ export const getorder = async () => {
     return fetchProcesser(obj);
 
 }
+
+export const processpayment = async (order) => {
+    const url = orderApi + "/process-payment" ;
+    const obj = {
+        method: "post",
+        url,
+        isPrivate: true,
+        data:order,
+     
+    };
+
+    return fetchProcesser(obj);
+
+}
+
 

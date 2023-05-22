@@ -8,9 +8,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Accordion, Button } from 'react-bootstrap';
 import { fetchpaymentsAction } from './CheckOutAction';
 import { orderlistAction, postorderAction } from '../order/OrderAction';
+import {loadStripe} from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js';
+import { StripePayment } from '../stripepayment/StripePayment';
+
 
 
 export const CheckOutPage=()=> {
+  const [selectedpayment, setselectedpayment] = useState("")
+
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
+
   const [order, setOrder]= useState([])
  const dispatch = useDispatch()
  const { cart } = useSelector((state) => state.counter)
@@ -195,12 +203,13 @@ console.log(paymentMethods)
         <Form.Check type="radio" label={item?.name}
         name="paymentmethods"
          value={item?.name}
-         onChange={handleOnChange}
+         onChange={()=>setselectedpayment(item?.name)}
            required
           />
        </Accordion.Header>
       <Accordion.Body>
       {item?.description}
+     
        </Accordion.Body>
       </Accordion.Item>
 
@@ -250,6 +259,10 @@ console.log(paymentMethods)
        
          
          </Form>
+{ selectedpayment === "Credit Card" &&   <Elements stripe={stripePromise}>
+      <StripePayment/>
+      </Elements>}
+       
  
     </Customelayout>
    ); 

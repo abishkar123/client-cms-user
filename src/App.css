@@ -128,3 +128,27 @@ border-color: solid rgba(0, 0, 0, 0.662);
   }
 
 
+  .cart-link{
+    position: relative;
+  }
+
+  .cart-icon{
+    font-size: 2rem;
+  }
+
+
+  .badge{
+    position: absolute;
+    top: -6px;
+    left:28px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50% !important;
+    background: rgb(231, 244, 131);
+    color: #000 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
