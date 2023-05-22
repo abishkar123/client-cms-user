@@ -3,14 +3,16 @@ import { Customelayout } from '../../components/customlayout/Customelayout'
 import { DashboardCard } from './DashboardCard'
 import {Row, Col, Container} from 'react-bootstrap'
 import { FrontImageCarousel } from './FrontImageCarousel'
+import { Header } from '../../components/layout/Header'
+import { Footer } from '../../components/layout/Footer'
 
 
 export const Dashboard = () => {
   
   return (
     <div>
-      <Customelayout>
-        <div className='p-3 mt-3'>
+     <Header/>
+        <div className='mt-3'>
         <FrontImageCarousel/>
         </div>
         
@@ -23,7 +25,7 @@ export const Dashboard = () => {
        </Row>
           </Container>
         </div>
-      </Customelayout>
+    <Footer/>
         
     </div>
   )
