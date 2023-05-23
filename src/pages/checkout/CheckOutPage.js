@@ -7,7 +7,7 @@ import { Customelayout } from '../../components/customlayout/Customelayout';
 import { useDispatch, useSelector } from 'react-redux';
 import { Accordion, Button } from 'react-bootstrap';
 import { fetchpaymentsAction } from './CheckOutAction';
-import { orderlistAction, postorderAction } from '../order/OrderAction';
+import { fetchorder, orderlistAction, postorderAction } from '../order/OrderAction';
 import {loadStripe} from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js';
 import { StripePayment } from '../stripepayment/StripePayment';
@@ -38,7 +38,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
   
 
   })
-  console.log(order)
+ 
  }
 
  const handleOnplaceoder = (e)=>{
@@ -52,7 +52,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
   }
 
   const newOrder = {...rest, cart, paymentDetails}
-  console.log(newOrder, "new order")
+  
   dispatch(postorderAction(newOrder))
  }
 
@@ -73,9 +73,8 @@ useEffect(() => {
 }, [dispatch])
 
 
-console.log(order)
 
-console.log(paymentMethods)
+
   return (
     <Customelayout>
         <div className='checkoutfont'>SECURE CHECKOUT </div>
@@ -207,8 +206,17 @@ console.log(paymentMethods)
            required
           />
        </Accordion.Header>
+       
       <Accordion.Body>
-      {item?.description}
+      { selectedpayment ===   "Credit Card" || selectedpayment === "Debit Card"
+ ?  <Elements stripe={stripePromise}>
+      <StripePayment/>
+      </Elements>
+
+      : <Button className='place_order mt-3' variant='dark' type='submit'>PROCEED TO SHIPPING</Button>
+       
+   }
+      {/* {item?.description} */}
      
        </Accordion.Body>
       </Accordion.Item>
@@ -253,17 +261,13 @@ console.log(paymentMethods)
                                 </div> */}
 
          </Col>
-         <Button className='place_order mt-3' variant='dark' type='submit'>PROCEED TO SHIPPING</Button>
+      
  
          </Row>
        
          
          </Form>
-{ selectedpayment === "Credit Card" &&   <Elements stripe={stripePromise}>
-      <StripePayment/>
-      </Elements>}
-       
- 
+
     </Customelayout>
    ); 
 }

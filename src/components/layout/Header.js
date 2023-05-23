@@ -66,14 +66,16 @@ const navigate = useNavigate()
         <Nav className='ms-auto'>
           {user?._id?(
             <>
-            <h6 className='nav'> welcome back{""}{user.fname}</h6>
+            <h6 className='nav '> welcome back{" "}{user.fname}</h6>
               <Link className='nav-link  text-light'to="/">Home</Link>
             <Link className='nav-link  text-light hover'  to="/login">
                <i className="fa-solid fa-house fa-lg"  title='MyAccount'></i></Link>
+
+               <Link className='nav-link cart-link text-light'to="/cart">
+              <div className='badge'>{carts}</div>
+               <i className="fa-solid fa-cart-plus fa-lg cart-icon"  title='Opening Shopping Cart'></i>  
+               </Link>
         
-            <Link className='nav-link  text-light'to="/cart">
-               <i className="fa-solid fa-cart-plus fa-lg fa-beat"  title='Opening Shopping Cart'> {carts}</i>  </Link>
-         
             </>
 
           ):(

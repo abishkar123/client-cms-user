@@ -1,17 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { processpayment } from "../../helper/axioshelper";
+import { useDispatch, useSelector } from "react-redux";
+import {fetchorder} from "../order/OrderAction"
+
 const appearance = {
   theme: "stripe",
 };
 export const StripePayment = () => {
+  const dispatch = useDispatch()
+ const { cart } = useSelector((state) => state.counter)
+
+ const totalAmount = cart.reduce((acc, pp)=>{
+  return acc + parseInt(pp.shopQty* pp.salesPrice)})
+
+//   const {order} = useSelector((state)=>state.orderlist)
+//   const {_id} = order
+//  const findoneOrder = order ? order.find((item)=>item._id === _id):[]
+//  console.log(findoneOrder, order)
+
+
+  useEffect(()=>{
+    dispatch(fetchorder())
+  },[dispatch])
+ 
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
 
+
   const handleSubmit = async e =>{
+   
     e.preventDefault()
 
     fetch('http://localhost:8001/api/v1/order/process-payment', {
@@ -21,7 +41,7 @@ export const StripePayment = () => {
           'Authorization': sessionStorage.getItem("accessJWT")
         },
         body: JSON.stringify({
-          amount: 5000, // amount in cents
+          amount:totalAmount * 100, // amount in cents
           currency: 'aud',
           payment_method_types: ['card'],
         }),
@@ -109,7 +129,7 @@ export const StripePayment = () => {
     <form onSubmit={handleSubmit}>
       <CardElement />
       <button type="submit" disabled={!stripe}>
-        Pay
+        Pay Here
       </button>
       {error && <div>{error}</div>}
       {success && <div>Payment successful!</div>}

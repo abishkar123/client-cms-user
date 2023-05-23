@@ -6,7 +6,7 @@ import { setorderlist } from "./OrderSlice";
 
 export const fetchorder = () => async (dispatch) => {
   const { status,order} = await getorder();
-  console.log(order)
+ 
   status === "success" && dispatch(setorderlist(order));
 };
 
@@ -19,7 +19,7 @@ export const postorderAction= (data) =>async dispatch =>{
     })
 
     const { status, message} = await resultPending;
-    console.log(status)
+  
     toast[status](message);
     
     
