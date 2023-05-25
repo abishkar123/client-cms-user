@@ -56,7 +56,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
   dispatch(postorderAction(newOrder))
  }
 
-
+console.log(order, selectedpayment)
 
  const d = 9.89;
  const totalAmount = cart.reduce((acc, pp)=>{
@@ -208,7 +208,7 @@ useEffect(() => {
        </Accordion.Header>
        
       <Accordion.Body>
-      { selectedpayment ===   "Credit Card" || selectedpayment === "Debit Card"
+      { item.name !==   "Credit Card" || item.name !== "Debit Card"
  ?  <Elements stripe={stripePromise}>
       <StripePayment/>
       </Elements>

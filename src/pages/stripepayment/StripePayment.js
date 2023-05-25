@@ -7,11 +7,11 @@ const appearance = {
   theme: "stripe",
 };
 export const StripePayment = () => {
-  const dispatch = useDispatch()
- const { cart } = useSelector((state) => state.counter)
+//   const dispatch = useDispatch()
+//  const { cart } = useSelector((state) => state.counter)
 
- const totalAmount = cart.reduce((acc, pp)=>{
-  return acc + parseInt(pp.shopQty* pp.salesPrice)})
+//  const totalAmount = cart.reduce((acc, pp)=>{
+//   return acc + parseInt(pp.shopQty* pp.salesPrice)})
 
 //   const {order} = useSelector((state)=>state.orderlist)
 //   const {_id} = order
@@ -19,9 +19,9 @@ export const StripePayment = () => {
 //  console.log(findoneOrder, order)
 
 
-  useEffect(()=>{
-    dispatch(fetchorder())
-  },[dispatch])
+  // useEffect(()=>{
+  //   dispatch(fetchorder())
+  // },[dispatch])
  
   const stripe = useStripe();
   const elements = useElements();
@@ -41,7 +41,7 @@ export const StripePayment = () => {
           'Authorization': sessionStorage.getItem("accessJWT")
         },
         body: JSON.stringify({
-          amount:totalAmount * 100, // amount in cents
+          amount: 100, // amount in cents
           currency: 'aud',
           payment_method_types: ['card'],
         }),
