@@ -13,7 +13,7 @@ import { gettrendingProductAction } from './pages/dashboard/dashboardAction';
 import { Product } from './pages/product/Product';
 import { YourCart } from './pages/order/YourCart';
 import { Cart } from './pages/addcart/Cart';
-import { CheckOutPage } from './pages/checkout/CheckOutPage';
+import CheckOut, { CheckOutPage } from './pages/checkout/CheckOutPage';
 import { NewAccVerify } from './pages/verfiyemail/NewAccVerify';
 import { PrivateRouter } from './components/private-router/PrivateRouter';
 import { MyAccount } from './pages/myaccount/MyAccount';
@@ -52,7 +52,8 @@ function App() {
       }/>
 
       <Route path="/checkoutpage" element={
-        <CheckOutPage/>
+        // <CheckOutPage/>
+        <CheckOut/>
       }/>
    
    <Route path="myaccount" element={<MyAccount/>} />

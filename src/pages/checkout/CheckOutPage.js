@@ -9,15 +9,18 @@ import { Accordion, Button } from 'react-bootstrap';
 import { fetchpaymentsAction } from './CheckOutAction';
 import { fetchorder, orderlistAction, postorderAction } from '../order/OrderAction';
 import {loadStripe} from '@stripe/stripe-js'
-import { Elements } from '@stripe/react-stripe-js';
 import { StripePayment } from '../stripepayment/StripePayment';
 
+import {Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 
 export const CheckOutPage=()=> {
   const [selectedpayment, setselectedpayment] = useState("")
-
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
+   
+  const elements = useElements();
+  
+  const stripe = useStripe();
+// const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
   const [order, setOrder]= useState([])
  const dispatch = useDispatch()
@@ -53,10 +56,54 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
 
   const newOrder = {...rest, cart, paymentDetails}
   
-  dispatch(postorderAction(newOrder))
+  // dispatch(postorderAction(newOrder))
+
+
+
+  // strip code below
+  
+  fetch('http://localhost:8001/api/v1/order/process-payment', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': sessionStorage.getItem("accessJWT")
+    },
+    body: JSON.stringify({
+      amount: 100, // amount in cents
+      currency: 'aud',
+      payment_method_types: ['card'],
+    }),
+  }).then((response) => {
+    return response.json();
+  }).then((data) => {
+    // Confirm the payment on the client side
+    console.log(data)
+    stripe.confirmCardPayment(data.clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement),
+      },
+    }).then((result) => {
+      if (result.error) {
+        // Show error to customer
+        console.log(result.error.message);
+      } else {
+        // Payment succeeded
+        console.log(result.paymentIntent);
+      }
+    });
+  }).catch((err) => {
+    console.log(err);
+  });
+
  }
 
-console.log(order, selectedpayment)
+ const handlePayMethod = ({e, method}) => {
+if(e.target.checked){
+  setselectedpayment(method)
+}  
+
+ }
+
 
  const d = 9.89;
  const totalAmount = cart.reduce((acc, pp)=>{
@@ -202,21 +249,25 @@ useEffect(() => {
         <Form.Check type="radio" label={item?.name}
         name="paymentmethods"
          value={item?.name}
-         onChange={()=>setselectedpayment(item?.name)}
+         onChange=
+        //  {handleOnChange}
+       {(e)=>handlePayMethod({e,method: item.name})}
            required
           />
        </Accordion.Header>
        
       <Accordion.Body>
-      { item.name !==   "Credit Card" || item.name !== "Debit Card"
- ?  <Elements stripe={stripePromise}>
-      <StripePayment/>
+      {/* { item.name === "Credit Card" || item.name === "Debit Card"
+      ?<Elements stripe={stripePromise}>
+      {/* <StripePayment/> */}
+    {/*  <CardElement />
       </Elements>
 
       : <Button className='place_order mt-3' variant='dark' type='submit'>PROCEED TO SHIPPING</Button>
        
-   }
-      {/* {item?.description} */}
+   } */}
+   {/* <Button className='place_order mt-3' variant='dark' type='submit'>PROCEED TO SHIPPING</Button>
+      {item?.description} */}
      
        </Accordion.Body>
       </Accordion.Item>
@@ -272,3 +323,17 @@ useEffect(() => {
    ); 
 }
 
+
+
+ const CheckOut = ()=>{
+  const stripe = useStripe();
+  const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
+
+
+return  <Elements stripe={stripePromise}>
+  {CheckOutPage}
+</Elements>
+
+} 
+
+export  default CheckOut
