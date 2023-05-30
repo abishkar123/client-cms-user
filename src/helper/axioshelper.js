@@ -26,6 +26,7 @@ const fetchProcesser =async ({method, url, data,token, isPrivate} )=>{
           data,
           headers,
         });
+        
         return res.data  
     } catch (error) {
         const message = error.message;
@@ -94,6 +95,7 @@ export const fetchAdminProfile = async () => {
 
     return fetchProcesser(obj);
 };
+
 export const fetchNewAccessJWT = async () => {
     const url = clientapi + "/new-accessjwt";
     const token = localStorage.getItem("refreshJWT");
@@ -171,6 +173,7 @@ export const fetchcategory= async ()=>{
 };
 
 /// payment 
+
 export const fetchpayment= async ()=>{
 
     const url = paymentapi;
@@ -185,18 +188,21 @@ export const fetchpayment= async ()=>{
 };
 
 
+/// Order 
 export const postOrder = async (order) => {
-    const url = orderApi + "/add";
+    const url = orderApi + "/add"
+    console.log(url)
     const obj = {
-        method: "post",
-        url,
-        isPrivate: true,
-        data: order,
-    };
+      method: "post",
+      url,
+      isPrivate: true,
+      data: order,
+    }
+  
+    return fetchProcesser(obj)
+  }
 
-    return fetchProcesser(obj);
 
-}
 
 export const getorder = async () => {
     const url = orderApi ;
@@ -211,18 +217,28 @@ export const getorder = async () => {
 
 }
 
-export const processpayment = async (order) => {
-    const url = orderApi + "/process-payment" ;
+
+
+  
+  export const updateOrder = async (order) => {
+    const url = orderApi + "/status"
     const obj = {
-        method: "post",
-        url,
-        isPrivate: true,
-        data:order,
-     
-    };
-
-    return fetchProcesser(obj);
-
-}
-
-
+      method: "patch",
+      url,
+      data: order,
+      isPrivate: true,
+    }
+  
+    return fetchProcesser(obj)
+  }
+  
+  export const processpayment = async (order) => {
+    const url = orderApi + "/create"
+    const obj = {
+      method: "post",
+      url,
+      isPrivate: true,
+      data: order,
+    }
+  
+    return fetchProcesser(obj)}

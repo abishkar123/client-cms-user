@@ -7,7 +7,7 @@ export const loginAction = (formData) => async (dispatch) => {
     try {
         dispatch(requestPending())
         const pending = loginUser(formData)
-        console.log(formData)
+        
         toast.promise(pending, { pending: "Please wait ...." });
 
         const { status, message, toknes, user } = await pending;

@@ -22,7 +22,7 @@ const { trendingProducts} = useSelector((state)=> state.trending)
 
 const filteredproduct = trendingProducts.length ? trendingProducts.find(item=>item.slug === slug) : []
 
- console.log(filteredproduct, trendingProducts, slug,"wejkhjh")
+ 
 // useEffect(() => {
 //     dispatch(getSelectedProductAction(sllug))
 // },[])

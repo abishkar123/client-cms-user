@@ -1,20 +1,29 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit"
 
+const stateCurrentOrder = JSON.parse(localStorage.getItem("order"))
+console.log(stateCurrentOrder)
 const initialState = {
-    order:[],
+  order: [],
+  currentOrder: stateCurrentOrder,
 }
 
 const OrderSlice = createSlice({
-    name: "orderlist",
-    initialState,
-    reducers:{
-        setorderlist:(state, {payload = []})=>{
-            state.order = payload;  
-            
-        }
-    }
+  name: "orderlist",
+
+  initialState,
+  reducers: {
+    setorderlist: (state, { payload = [] }) => {
+      state.order = payload
+    },
+    currentOrderHandler: (state, { payload }) => {
+      localStorage.setItem("order", JSON.stringify(payload))
+      state.currentOrder = payload
+    },
+  },
 })
 
-const {reducer, actions}= OrderSlice;
-export const {setorderlist} = actions
-export default reducer;
+const { reducer, actions } = OrderSlice
+export const { setorderlist, 
+   currentOrderHandler
+ } = actions
+export default reducer
