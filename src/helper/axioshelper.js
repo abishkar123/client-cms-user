@@ -1,5 +1,5 @@
 import axios from "axios";
-const rootUrl = "http://localhost:8001/api/v1";
+const rootUrl =  process.env.NODE_ENV  === 'production'? process.env.ROOT_API :"http://localhost:8001/api/v1";
 const clientapi = rootUrl + "/user";
 const DashboardCardApi = rootUrl + "/product";
 const catapi= rootUrl + "/category";
