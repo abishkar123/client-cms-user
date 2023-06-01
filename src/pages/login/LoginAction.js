@@ -36,8 +36,8 @@ export const loginAction = (formData) => async (dispatch) => {
 }
 
 const getAdminProfile = () => async (dispatch) => {
-    const { status, user } = await fetchAdminProfile();
-
+    const { status, user, message } = await fetchAdminProfile();
+    toast[status](message);
 
     status === "success"
         ? dispatch(requestSuccess(user))

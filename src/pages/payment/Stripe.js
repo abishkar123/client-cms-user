@@ -5,6 +5,7 @@ import { CardElement,Elements,useElements,useStripe,} from "@stripe/react-stripe
   import { processpayment } from "../../helper/axioshelper"
   import { useSelector } from "react-redux"
   import { useNavigate } from "react-router-dom"
+  import Swal from "sweetalert2"
 
   
   const PaymentForm = ({ data: value, paymentSuccess }) => {
@@ -17,6 +18,23 @@ import { CardElement,Elements,useElements,useStripe,} from "@stripe/react-stripe
     const totalAmount = cart.reduce((a, c) => {
       return a + parseInt(c.shopQty * c.salesPrice)
     }, 0)
+
+    const handleSuccess = () => {
+      Swal.fire({
+          icon: "success",
+          title: "Your payment is successful, we will shortly inform your Order!",
+          timer: 4000,
+          allowOutsideClick: false,
+      })
+  }
+  const handleFail = () => {
+      Swal.fire({
+          icon: "error",
+          title: "Something wrong with you Card. Payment not successful",
+          timer: 4000,
+          allowOutsideClick: false,
+      })
+  }
   
     const handleSubmit = async (e) => {
       e.preventDefault()
@@ -31,10 +49,12 @@ import { CardElement,Elements,useElements,useStripe,} from "@stripe/react-stripe
         })
   
         if (payload.paymentIntent.status === "succeeded") {
+          handleSuccess()
           console.log("success")
           setProcessing(false)
           paymentSuccess()
         } else {
+          handleFail()
           console.log("failed")
           setProcessing(false)
           console.log(payload.error)
@@ -50,7 +70,7 @@ import { CardElement,Elements,useElements,useStripe,} from "@stripe/react-stripe
         <hr />
         <CardElement id="card-element" />
         <Button className="w-100 mt-4" type="submit">
-          PAY HERE 
+          PAY 
         </Button>
         {processing && <h4 className="text-center mt-2">Processing...</h4>}
       </Form>

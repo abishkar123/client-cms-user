@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 
 
 
+
 export const Register = () => {
   const [form, setForm] = useState({})
 
@@ -27,13 +28,7 @@ export const Register = () => {
         return
     }
     const { status, message } = await postnewuser(rest);
-   
-  
-    toast[status](message);
-
-
-
-
+    toast[status](message)
 }
 
   const inputes = [

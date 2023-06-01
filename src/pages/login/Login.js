@@ -28,11 +28,13 @@ export const Login = () => {
           return alert("Please fill in both the fields!");
       }
       // disptach login action to call api
+      
       dispatch(loginAction(formDt));
     
   }
   useEffect(() => {
     user?._id ? navigate(origin):dispatch(autoLogin())
+
   }, [user?._id, navigate, origin, dispatch])
   return (
     <Customelayout>

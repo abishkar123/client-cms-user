@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 import { updateOrder } from "../../helper/axioshelper"
 import { currentOrderHandler } from "../order/OrderSlice"
+import { toast } from "react-toastify"
 
 const Payment = () => {
   const dispatch = useDispatch()
@@ -20,12 +21,14 @@ const Payment = () => {
 
   const paymentSuccess = async () => {
     try {
-      const { status, order } = await updateOrder({
+      const { status, order, message } = await updateOrder({
         orderId: JSON.parse(localStorage.getItem("order"))?._id,
         isPaid: true,
+        
       })
 
       status === "success" && dispatch(currentOrderHandler(order))
+      toast[status](message)
     } catch (error) {
       console.log(error.message)
     }
