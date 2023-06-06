@@ -60,7 +60,7 @@ const handleOnQty = (id, e) => {
             </Form>
 
 
-    <div className='d-grid'>
+    <div className='d-grid py-3'>
 <Link to="/checkoutpage">   <Button  type='submit' variant='dark'> {""}CheckOut </Button></Link>
   
 </div>

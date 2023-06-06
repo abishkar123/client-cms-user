@@ -65,11 +65,11 @@ import { CardElement,Elements,useElements,useStripe,} from "@stripe/react-stripe
     }
   
     return (
-      <Form onSubmit={handleSubmit}>
+      <Form className="py-3" onSubmit={handleSubmit}>
         <h3 className="text-center">Enter Card Details</h3>
         <hr />
         <CardElement id="card-element" />
-        <Button className="w-100 mt-4" type="submit">
+        <Button className="w-100 mt-4 " type="submit">
           PAY 
         </Button>
         {processing && <h4 className="text-center mt-2">Processing...</h4>}
