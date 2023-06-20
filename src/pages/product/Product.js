@@ -59,7 +59,7 @@ const AddCartSubmit  = (e)=>{
                    <Form className='p-3'onSubmit={AddCartSubmit}>
                      <Card.Title>{filteredproduct?.name}</Card.Title>
                      <Row>
-                        <Col style={{borderRadius:"1rem"}}>   <Card.Img  variant="top" src={process.env.REACT_APP_DOMAIN + filteredproduct?.mainImage?.substr(6)} /></Col>
+                        <Col style={{borderRadius:"1rem"}}>   <Card.Img  variant="top" src={filteredproduct?.mainImage} /></Col>
                         <Col> <Card.Text> Price: {filteredproduct?.salesPrice}</Card.Text>
 
                          <Card.Text>

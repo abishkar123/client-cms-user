@@ -43,7 +43,7 @@ export const Category = () => {
             <Col mt="2">
            <Link className='nav-link' to={`/product/${item.slug}`}>
                 <Card style={{width:'18rem',  height:'60vh'}} className="m-3 card">
-                    <Card.Img  style={{width:'', h40vheight:"40vh"}}variant="top" src={process.env.REACT_APP_DOMAIN + item?.mainImage.substr(6)} />
+                    <Card.Img  style={{width:'', h40vheight:"40vh"}}variant="top" src={item.mainImage} />
                     <CustomeCart
                     key={item}
                     {...item}/>
