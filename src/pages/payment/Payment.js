@@ -57,8 +57,7 @@ const Payment = () => {
                   <td style={{ width: "20%" }}>
                     <img
                       src={
-                        item.mainImage &&
-                        process.env.REACT_APP_DOMAIN + item.mainImage.substr(6)
+                        item.mainImage
                       }
                       alt="item-img"
                       className="w-100"

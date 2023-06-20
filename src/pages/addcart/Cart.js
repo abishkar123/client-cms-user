@@ -34,7 +34,7 @@ const handleOnQty = (id, e) => {
             <Row className='py-3 box'>
         
            <Col className='shopping'  style={{borderRadius:"2rem"}}>
-           <img src={item?.mainImage && process.env.REACT_APP_DOMAIN + item.mainImage.substr(6)}
+           <img src={item?.mainImage}
              width="250px" alt="photos" />
            </Col>
         
