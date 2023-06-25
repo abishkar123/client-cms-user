@@ -24,12 +24,12 @@ import './dashboard.css'
 
      { trendingProducts?.map((item, index) => (
     <Col mt="2">
-        <Link className='nav-link' to={`/product/${ item.length.slug}`}>;
-            <figure title={item?.name} style={{ width:'20rem',  height:'40vh'}} className="m-3  card">;
-            <img style={{width:'39vh',height:"40vh"}}  src={   itemlength.mainImage}/>;
+        <Link className='nav-link' to={`/product/${ item.length?.slug}`}>;
+            <figure title={item.length?.name} style={{ width:'20rem',  height:'40vh'}} className="m-3  card">;
+            <img style={{width:'39vh',height:"40vh"}}  src={   item.length?.mainImage}/>;
 
-            <figcaption className='shoppingcar'  >{itemlength.name}"</figcaption> ;
-            <figcaption className='cardcss'> AU${itemlength.salesPrice}</figcaption>;
+            <figcaption className='shoppingcar'  >{item.length?.name}"</figcaption> ;
+            <figcaption className='cardcss'> AU${item.length?.salesPrice}</figcaption>;
 
 
         </figure>
