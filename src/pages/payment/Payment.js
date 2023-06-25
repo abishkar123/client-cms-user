@@ -57,16 +57,16 @@ const Payment = () => {
                   <td style={{ width: "20%" }}>
                     <img
                       src={
-                        item.mainImage
+                        item?.mainImage
                       }
                       alt="item-img"
                       className="w-100"
                     />
                   </td>
-                  <td>{item.name}</td>
-                  <td>{item.shopQty}</td>
-                  <td>{item.salesPrice}</td>
-                  <td>{item.shopQty * item.salesPrice}</td>
+                  <td>{item?.name}</td>
+                  <td>{item?.shopQty}</td>
+                  <td>{item?.salesPrice}</td>
+                  <td>{item?.shopQty * item?.salesPrice}</td>
                 </tr>
               ))}
               <tr>

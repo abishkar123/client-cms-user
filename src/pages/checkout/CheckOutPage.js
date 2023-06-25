@@ -248,7 +248,7 @@ export const CheckOutPage = () => {
               <Form.Label className="checkoutfont" as="payment">
                 Payment method:
               </Form.Label>
-              {paymentMethods.map((item, index) => (
+              {paymentMethods?.map((item, index) => (
                  <Accordion>
                  <Accordion.Item eventKey={index}>
                 <Accordion.Header>
@@ -291,7 +291,7 @@ export const CheckOutPage = () => {
               <Col>Your Cart ({Qty} items)</Col>
               <Col className="text-end"> ${totalAmount}</Col>
             </Row>
-            {cart.map((item, index) => (
+            {cart?.map((item, index) => (
               <Row style={{ color: "grey" }} key={index}>
                 <Col>
                   {" "}
