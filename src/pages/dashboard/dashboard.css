@@ -5,6 +5,7 @@
 
     display: grid;
     grid-template-areas: "stack";
+    
 }
 
 .card > * {
@@ -13,11 +14,11 @@
 
 .card > figcaption {
     display: grid;
-    align-items:start;
-    padding: 1.5rem 2rem;
+    align-items:end;
+    padding: 0.8rem 1rem ;
     background-image: linear-gradient(
         to botton,
-        rgb (33 44 55 / 0)
+        rgb (33 44 66 / 0)
         rgb (33 44 55 / 0)
         rgb (33 44 55 / 0.75)
     
