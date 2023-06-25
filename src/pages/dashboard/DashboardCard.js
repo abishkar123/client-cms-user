@@ -22,11 +22,11 @@ import './dashboard.css'
         
      <Row className="d-flex justify-content-around ">
 
-     {  trendingProducts?.map((item, index) => (
+     { trendingProducts?.map((item, index) => (
     <Col mt="2">
     
         <Link className='nav-link' to={`/product/${item?.slug}`}>
-            <figure title={item.name} style={{ width:'18rem',  height:'40vh'}} className="m-3  card">
+            <figure title={item?.name} style={{ width:'18rem',  height:'40vh'}} className="m-3  card">
             <img style={{width:'30vh',height:"40vh"}}  src={item?.mainImage}/>
 
             <figcaption className='shoppingcar'  >{item?.name}"</figcaption> 
