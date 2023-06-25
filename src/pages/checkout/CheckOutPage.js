@@ -284,7 +284,7 @@ export const CheckOutPage = () => {
             </Form.Group>
           </Col>
 
-          <Col className="orderSummary ">
+          <Col  md ="4"className="orderSummary ">
             <h6 className="text-center mt-4">Order Summary</h6>
             <hr></hr>
             <Row>

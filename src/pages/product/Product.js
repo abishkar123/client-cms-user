@@ -4,6 +4,7 @@ import {  useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { Card,Row,Col, Button, Container, Form, Ratio } from 'react-bootstrap';
 import { addcart } from '../addcart/countSlice';
+import './product.css'
 
 
 
@@ -59,10 +60,12 @@ const AddCartSubmit  = (e)=>{
                    <Form className='p-3'onSubmit={AddCartSubmit}>
                      <Card.Title>{filteredproduct?.name}</Card.Title>
                      <Row>
-                        <Col style={{borderRadius:"1rem"}}>   <Card.Img  variant="top" src={filteredproduct?.mainImage} /></Col>
-                        <Col> <Card.Text> Price: {filteredproduct?.salesPrice}</Card.Text>
+                        <Col lg="5" style={{borderRadius:"1rem"}}>   <Card.Img  variant="top" src={filteredproduct?.mainImage} /></Col>
+                        
+                        <Col lg="5" > 
+                        <Card.Text className=''> Price: {filteredproduct?.salesPrice}</Card.Text>
 
-                         <Card.Text>
+                         <Card.Text> 
 
                         <Form.Label>Quantity</Form.Label>
                          <Form.Control type="number" placeholder='0' defaultValue="1" min="1" max="item.qty"
@@ -70,13 +73,16 @@ const AddCartSubmit  = (e)=>{
                          /> 
                         </Card.Text>
 
-                        <div className='d-grid'> <Button type='submit' className='cardButton'
+
+
+                        <div className='d-grid' > <Button type='submit' className='cardButton'
                       
                         >ADD TO CART</Button></div>
                         
                         </Col>
+
                      </Row>
-                    <Card.Body>
+                    <Card.Body className='mt-3'>
                         <Card.Text className='text-muted'> Detail <br/>
                             {filteredproduct?.description}
                         </Card.Text>

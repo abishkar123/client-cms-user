@@ -26,10 +26,10 @@ import './dashboard.css'
     <Col mt="2">
     
         <Link className='nav-link' to={`/product/${item.slug}`}>
-            <figure  style={{ width:'18rem',  height:'40vh'}} className="m-3  card">
-            <img style={{width:'38vh',height:"40vh"}}  src={item.mainImage}/>
-            <figcaption>{item.name}</figcaption>
-            <figcaption>{item.salesPrice}</figcaption>
+            <figure title={item.name} style={{ width:'18rem',  height:'40vh'}} className="m-3  card">
+            <img style={{width:'30vh',height:"40vh"}}  src={item.mainImage}/>
+
+            <figcaption  >{item.name}"</figcaption> <figcaption> AU${item.salesPrice}</figcaption>
 
 
         </figure>
