@@ -5,6 +5,7 @@ import { useDispatch, useSelector} from 'react-redux';
 import { gettrendingProductAction } from './dashboardAction';
 import { Link, useParams } from 'react-router-dom';
 import { CustomeCart } from '../../components/CustomeCart';
+import './dashboard.css'
 
  export const DashboardCard =({slug, name, salesPrice,item, qty})=> {
   const dispatch = useDispatch();
@@ -20,7 +21,23 @@ import { CustomeCart } from '../../components/CustomeCart';
     <div>
         
      <Row className="d-flex justify-content-around ">
-        {  trendingProducts?.map((item, index) => (
+
+     {  trendingProducts?.map((item, index) => (
+    <Col mt="2">
+    
+        <Link className='nav-link' to={`/product/${item.slug}`}>
+            <figure  style={{ width:'18rem',  height:'40vh'}} className="m-3  card">
+            <img style={{width:'38vh',height:"40vh"}}  src={item.mainImage}/>
+            <figcaption>{item.name}</figcaption>
+            <figcaption>{item.salesPrice}</figcaption>
+
+
+        </figure>
+        </Link>
+        </Col>
+        ))}
+        
+        {/* {  trendingProducts?.map((item, index) => (
             <Col mt="2" >
            <Link className='nav-link' to={`/product/${item.slug}`}>
                 <Card  style={{ width:'18rem',  height:'60vh'}} className="m-3 cardcss">
@@ -31,7 +48,7 @@ import { CustomeCart } from '../../components/CustomeCart';
                 </Card>
                 </Link>
             </Col>
-        ))}
+        ))} */}
     </Row>
     
 </div>

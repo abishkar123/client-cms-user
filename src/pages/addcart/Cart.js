@@ -29,7 +29,7 @@ const handleOnQty = (id, e) => {
             <div className="shoppingcart">Shopping Cart</div>
             <div className='shopping'>A${price}</div>
             <Form className='mt-3'>
-            { cart?.map ((item, i )=>(
+            {cart?.map ((item, i )=>(
                  
             <Row className='py-3 box'>
         
