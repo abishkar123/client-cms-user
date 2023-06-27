@@ -58,6 +58,7 @@ export const autoLogin = () => async (dispatch) => {
 
     const accessJWT = sessionStorage.getItem("accessJWT");
     const refreshJWT = localStorage.getItem("refreshJWT");
+    // const cart = JSON.parse(localStorage.getItem("cart"))
   
 
     if (accessJWT) {
@@ -81,6 +82,7 @@ export const autoLogin = () => async (dispatch) => {
 export const forceLogout = () => (dispatch) => {
     sessionStorage.removeItem("accessJWT");
     localStorage.removeItem("refreshJWT");
-    localStorage.removeItem("order")
+    
+    // JSON.parse(localStorage.removeItem("cart"))
     dispatch(requestSuccess({}));
 };

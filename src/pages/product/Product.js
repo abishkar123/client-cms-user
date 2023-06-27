@@ -68,7 +68,7 @@ const AddCartSubmit  = (e)=>{
                          <Card.Text> 
 
                         <Form.Label>Quantity</Form.Label>
-                         <Form.Control type="number" placeholder='0' defaultValue="1" min="1" max="item.qty"
+                         <Form.Control type="number" placeholder='0' defaultValue="1" min="1" max="item?.qty"
                          onChange={handleOnChange}
                          /> 
                         </Card.Text>
