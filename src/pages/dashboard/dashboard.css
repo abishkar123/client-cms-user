@@ -18,10 +18,9 @@
     padding: 0.8rem 1rem ;
     background-image: linear-gradient(
         to botton,
-        rgb (33 44 66 / 0)
-        rgb (33 44 55 / 0)
-        rgb (33 44 55 / 0.75)
-    
+        rgb(33 44 66 / 0)
+        rgb(33 44 55 / 0)
+        rgb(33 44 55 / 0.75)
     );
 }
 
