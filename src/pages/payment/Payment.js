@@ -11,6 +11,7 @@ const Payment = () => {
   const dispatch = useDispatch()
   
   const { currentOrder } = useSelector((state) => state.orderlist)
+  console.log(currentOrder)
   const { cart } = useSelector((state) => state.counter)
 
 

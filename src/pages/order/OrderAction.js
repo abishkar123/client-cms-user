@@ -9,7 +9,7 @@ export const fetchorder = () => async (dispatch) => {
   
  
   status === "success" && dispatch(setorderlist(order));
-};
+}
 
 
 export const postorderAction= (data) =>async dispatch =>{

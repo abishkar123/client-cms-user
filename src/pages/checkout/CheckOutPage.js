@@ -10,6 +10,7 @@ import { fetchpaymentsAction } from "./CheckOutAction"
 import { postorderAction } from "../order/OrderAction"
 import { useNavigate } from "react-router-dom"
 
+
 export const CheckOutPage = () => {
   const [selectedpayment, setselectedpayment] = useState("")
   const [order, setOrder] = useState({})
@@ -70,6 +71,7 @@ export const CheckOutPage = () => {
 
   //  }
 
+  
   const d = 9.89
   const totalAmount = cart.reduce((acc, pp) => {
     return acc + parseInt(pp.shopQty * pp.salesPrice)
