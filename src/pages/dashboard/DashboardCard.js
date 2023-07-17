@@ -28,7 +28,8 @@ import './dashboard.css'
             <figure title={item?.name} style={{ width:'20rem',  height:'40vh'}} className="m-3  card">
             <img style={{width:'39vh',height:"40vh"}}  src={   item?.mainImage}/>
 
-            <figcaption className='shoppingcar'  >{item?.name}"</figcaption>             <figcaption className='cardcss'> AU${item?.salesPrice}</figcaption>
+            <figcaption className='shoppingcar'  >{item?.name}"</figcaption>           
+           <figcaption className='cardcss'> AU${item?.salesPrice}</figcaption>
 
 
         </figure>
