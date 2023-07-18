@@ -57,7 +57,7 @@ const AddCartSubmit  = (e)=>{
     <div>
         <Customelayout>
             <Container>
-                   <Form className='p-3'onSubmit={AddCartSubmit}>
+                   <Form className='p-5'onSubmit={AddCartSubmit}>
                      <Card.Title>{filteredproduct?.name}</Card.Title>
                      <Row>
                         <Col lg="5" style={{borderRadius:"1rem"}}>   <Card.Img  variant="top" src={filteredproduct?.mainImage} /></Col>

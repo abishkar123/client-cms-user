@@ -19,6 +19,10 @@ import { PrivateRouter } from './components/private-router/PrivateRouter';
 import { MyAccount } from './pages/myaccount/MyAccount';
 import { UserDashboard } from './pages/userdashboard/UserDashboard';
 import Payment from './pages/payment/Payment';
+import { ToastContainer } from 'react-toastify';
+// import { Toaster } from 'react-hot-toast'
+
+
 
 
 
@@ -70,7 +74,8 @@ function App() {
 
       </Routes>
      </Browser>
-      
+     <ToastContainer/>
+         {/* <Toaster/> */}
           
     </div>
   );
