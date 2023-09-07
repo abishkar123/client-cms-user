@@ -40,7 +40,7 @@ export const Category = () => {
         <Customelayout>
         <Row className="d-flex justify-content-around">
         {  filteredproduct?.map((item, index) => (
-            <Col mt="2">
+            <Col className='mt-5'>
            <Link className='nav-link' to={`/product/${item?.slug}`}>
                 <Card style={{width:'18rem',  height:'60vh'}} className="m-3 card">
                     <Card.Img  style={{width:'', h40vheight:"40vh"}}variant="top" src={item?.mainImage} />
