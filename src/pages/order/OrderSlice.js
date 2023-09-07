@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const stateCurrentOrder = localStorage.getItem('order') ? JSON.parse(localStorage.getItem("order")) : {}
+const stateCurrentOrder = localStorage.getItem('order') 
+// ? JSON.parse(localStorage.getItem("order")) : []
 
 
 const initialState = {
